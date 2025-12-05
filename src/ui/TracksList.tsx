@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
-import type { GetTrackListOutput } from "../shared/types/tracks.types";
 import TrackItem from "./TrackItem";
-import { getTracks } from "../dal/api";
+import { useTracks } from "../bll/useTracks";
 
 interface IProps {
   selectedTrackId: string | null;
@@ -9,13 +7,7 @@ interface IProps {
 }
 
 const TracksList = ({ selectedTrackId, onTrackSelected }: IProps) => {
-  const [tracks, setTracks] = useState<GetTrackListOutput[] | null>(null);
-
-  useEffect(() => {
-    getTracks().then((json) =>
-      setTracks(json.data)
-    );
-  }, []);
+  const {tracks} = useTracks()
 
   const handleTrackSelectedId = (id: string) => {
     onTrackSelected?.(id);
