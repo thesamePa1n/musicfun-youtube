@@ -1,4 +1,5 @@
 import { useTrackDetail } from "../bll/useTrackDetail";
+import styles from './TrackDetail.module.css'
 
 interface IProps {
   selectedTrackId: string | null;
@@ -8,7 +9,7 @@ const TrackDetail = (props: IProps) => {
   const {trackDetails} = useTrackDetail(props.selectedTrackId)
 
   return (
-    <div>
+    <div className={styles.track}> 
       <h2>details</h2>
       {!trackDetails && !props.selectedTrackId && "Track is not selected"}
       {!trackDetails && props.selectedTrackId && "Loading..."}

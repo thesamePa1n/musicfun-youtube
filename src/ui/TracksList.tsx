@@ -1,5 +1,6 @@
 import TrackItem from "./TrackItem";
 import { useTracks } from "../bll/useTracks";
+import styles from './TracksList.module.css'
 
 interface IProps {
   selectedTrackId: string | null;
@@ -30,7 +31,7 @@ const TracksList = ({ selectedTrackId, onTrackSelected }: IProps) => {
   }
 
   return (
-    <ul>
+    <ul className={styles.tracks}>
       {tracks.map((track) => {
         return (
           <TrackItem
